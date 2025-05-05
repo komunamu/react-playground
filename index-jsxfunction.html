@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+    <!--JXS function style-->
+<head>
+    <title>React Playground</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Add Babel script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Change script type to text/babel -->
+    <script type="text/babel">
+        const root = document.getElementById('root');
+
+        // Your JSX elements
+        const Title = () => { return (<h3 id="title" onMouseEnter={() => {console.log("mouse entered title")}}>React Playground</h3>);}
+        const Btn = () => {return (<button style={{backgroundColor: "tomato"}}
+            onClick={ () => console.log("im clicked")}
+            >Click Me</button>);};
+
+        // Container using JSX
+        const Container = (
+            <div>
+                <Title />
+                <Btn />
+            </div>
+        );
+
+        // Render the container
+        ReactDOM.render(Container, root);
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <!--State-->
+<head>
+    <title>React Playground</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Add Babel script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Change script type to text/babel -->
+    <script type="text/babel">
+        const root = document.getElementById('root');
+        let counter = 0;
+        function counterUP() {
+            counter += 1;
+            renderCounter();
+
+        }
+
+        function renderCounter() {
+            ReactDOM.render(<Container/>, root);
+        }
+
+        // Container using JSX
+        const Container = () => (
+            <div>
+                <h3>Totla clicks: {counter}</h3>
+                <button onClick={counterUP}> Click me </button>
+            </div>
+        );
+
+        // Render the container
+        renderCounter();
+       
+    </script>
+</body>
+</html>
