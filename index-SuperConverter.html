@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+    <!--State-->
+<head>
+    <title>React Playground</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Add Babel script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Change script type to text/babel -->
+    <script type="text/babel">
+        const root = document.getElementById('root');
+        
+        // Container using JSX
+        // super coverter app
+        const App = () => { 
+            const [amount, setAmount] = React.useState(0);
+            const [flipped, setFlipped] = React.useState(false);
+           
+            const onChange = (event) => {
+                console.log("change:"+ event.target.value);
+                setAmount(event.target.value);
+            };
+            const resetBtn = () => {
+                console.log("reset");
+                setAmount(0);
+            }
+            const onFlip = () => {
+                console.log("flip");
+                setFlipped((current) => !current);
+            }
+
+            return (
+            <div>
+                <h1>Super Coverter</h1>
+                <div>
+                    <label htmlFor="minutes">Minutes </label>
+                    <input id="minutes" value = {flipped? amount * 60 : amount} onChange={onChange} placeholder="Minutes" type="number" disabled={flipped}></input>
+                </div>
+                <div>
+                    <label htmlFor="hours">Hours </label>
+                    <input id="hours" value={flipped? amount : Math.round(amount/60)} onChange={onChange} placeholder="Hours"  type="number" disabled={!flipped}></input>
+                </div>
+                <button onClick={resetBtn}>Reset</button>
+                <button onClick={onFlip}>Flip</button>
+                
+            </div>
+        )};
+
+
+        // Render the container
+        ReactDOM.render(<App/>, root);
+       
+    </script>
+</body>
+</html>
