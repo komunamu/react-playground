@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+    <!--State-->
+<head>
+    <title>React Playground</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Add Babel script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Change script type to text/babel -->
+    <script type="text/babel">
+        // component
+        // Props only one parameter, props is an object
+        //Short cut : function Btn({banana}){}
+        const Btn = (props) => {
+            console.log(props);
+            return (
+                <button style={{
+                    backgroundColor: "green",
+                    color: "white",
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    border: "none",
+                    cursor: "pointer"
+                }}>{props.banana}</button>
+            );
+        };
+        
+        const App = () => { 
+        
+            return (
+                <div>
+                    <Btn banana="Save Changes"/>
+                    <Btn banana="countinue"/>
+                </div>
+        );};
+
+        const root = document.getElementById('root');
+        
+        // Render the container
+        ReactDOM.render(<App/>, root);
+       
+    </script>
+</body>
+</html>
