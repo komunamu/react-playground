@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+    <!--State-->
+<head>
+    <title>React Playground</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://unpkg.com/prop-types@15.7.2/prop-types.js"></script>
+    <!-- Add Babel script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Change script type to text/babel -->
+    <script type="text/babel">
+        
+        // Props only one parameter, props is an object
+        //Short cut : function Btn({banana}){}
+        const Btn = ({text, fontSize}) => {
+            console.log("this button is Rendered:" + text);
+            return (
+                <button 
+                    style={{
+                    backgroundColor: "green",
+                    color: "white",
+                    padding: "5px 10px",
+                    borderRadius: "5px",
+                    border: "none",
+                    cursor: "pointer",
+                    fontSize: fontSize,
+                }}>{text}</button>
+            );
+        };
+
+        // Props validation
+        // PropTypes is a library that is used to validate props
+        // IsRequired is a method that is used to validate props
+        
+
+        Btn.propTypes = {
+            text: PropTypes.string,
+            fontSize: PropTypes.string.isRequired,
+        };
+
+       
+        // if status is changed, the component will be re-rendered
+        // state is a way to store data that can be changed
+        
+        const App = () => { 
+            
+            return (
+                <div>
+                    <Btn text="Save Changes" fontSize={18}/>
+                    <Btn text="Test" fontSize={12}/>
+                </div>
+        );};
+
+        const root = document.getElementById('root');
+        
+        // Render the container
+        ReactDOM.render(<App/>, root);
+       
+    </script>
+</body>
+</html>
