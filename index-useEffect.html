@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+    <!--State-->
+<head>
+    <title>React Playground</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Add Babel script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Change script type to text/babel -->
+    <script type="text/babel">
+        
+        
+        const App = () => { 
+            const [counter, setValue] = React.useState(0);
+            const onClick = () => setValue((prev) => prev +1 );
+            console.log("I run all the time");
+            const iRunOnlyOnce = () => {
+                console.log("I run only once");
+            };
+            //UseEffect is a hook that runs after every render. Run only once
+            //We can use it when we call API one time.
+            useEffect(iRunOnlyOnce, []);
+            return (
+                <div>
+                    <h1>Counter: {counter}</h1>
+                    <button onClick={onClick}>Click me</button>
+                </div>
+        );};
+
+        const root = document.getElementById('root');
+        
+        // Render the container
+        ReactDOM.render(<App/>, root);
+       
+    </script>
+</body>
+</html>
