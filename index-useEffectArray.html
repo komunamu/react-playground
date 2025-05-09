@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+    <!--State-->
+<head>
+    <title>React Playground</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Add Babel script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Change script type to text/babel -->
+    <script type="text/babel">
+        
+        
+        const App = () => { 
+            const [counter, setValue] = React.useState(0);
+            const [keyword, setKeyword] = React.useState("");
+
+            const onClick = () => setValue((prev) => prev +1 );
+            const onChange = (event) => { setKeyword(event.target.value)};
+            
+            console.log("I run all the time");
+            
+            //UseEffect is a hook that runs after every render. Run only once
+            //We can use it when we call API one time.
+            React.useEffect(()=> {
+                console.log("Call the API...");
+            }, []);
+
+            //Whenever the keyword changes, run this code
+            React.useEffect(()=> {
+                if(keyword != "" && keyword.length > 5) {
+                    console.log("Search for", keyword);
+                }
+            }, [keyword]);
+
+
+            return (
+                <div>
+                    <input value={keyword} onChange={onChange} type="text" placeholder="search here..." />
+                    <h1>Counter: {counter}</h1>
+                    <button onClick={onClick}>Click me</button>
+                </div>
+        );};
+
+        const root = document.getElementById('root');
+        
+        // Render the container
+        ReactDOM.render(<App/>, root);
+       
+    </script>
+</body>
+</html>

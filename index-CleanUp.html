@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+    <!--State-->
+<head>
+    <title>React Playground</title>
+    <script crossorigin src="https://unpkg.com/react@17/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+    <!-- Add Babel script -->
+    <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <!-- Change script type to text/babel -->
+    <script type="text/babel">
+
+        function Hello() {
+            React.useEffect(()=>{
+                console.log("Created");
+                return () => console.log("Destroyed"); //Cleanup function
+            }, [])
+            return <h1>Hello World</h1>
+        }
+        
+        
+        const App = () => { 
+            const[ showing, setShowing] = React.useState(false);
+            const onClick = () => {
+                setShowing((prev) => !prev);
+            }
+
+            return (
+                <div>
+                    {showing? <Hello/> : null}
+                   <button onClick={onClick}>{showing? "Hide" : "Show"}</button>
+                </div>
+        );};
+
+        const root = document.getElementById('root');
+        
+        // Render the container
+        ReactDOM.render(<App/>, root);
+       
+    </script>
+</body>
+</html>
